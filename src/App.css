@@ -1,0 +1,13 @@
+.box{
+    border: 1px solid black;
+    width: 500px;
+}
+
+.item-img{
+    width: 400px;
+}
+/* 새로 정렬을 가로정렬로 변경 및 중앙 정렬 */
+.main{
+    display: flex; 
+    justify-content: center;
+}
