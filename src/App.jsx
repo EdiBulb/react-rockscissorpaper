@@ -18,36 +18,76 @@ const choice = {
     img:"data:image/jpeg;base64,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"
   },
   scissor:{
-    name:"Scissior",
+    name:"Scissor",
     img:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRSN8Z21iQulBMICc1BdFMmGbRQnvNiB9-Gew&s"
   },
   paper:{
-    name:"paper",
+    name:"Paper",
     img:"https://www.firstpalette.com/images/craft-steps/papersnowflake-step1.jpg"
   }
 }
 
 function App() {
   const [userSelect, setUserSelect] = useState(null) // useSelect 가 바뀔 때마다 UI를 바꿔줄 것이다.
-  const [computerSelect, setComputerSelect] = useState(null) 
+  const [computerSelect, setComputerSelect] = useState("") // 컴퓨터 값이 바뀔 때마다 UI를 바꿔준다.
 
+  // 승패
+  const [result, setResult] = useState("")
+
+  const[computerResult, setComputerResult] = useState("")
+
+  /** 
+  //컴퓨터 결과 함수
+  const reverse=(user, computer)=>{
+    // if(result=="tie") return "tie"
+    // else if(result =="Win") return "Lose"
+    // else if(result == "Lose") return "Win"
+
+    //로직
+    //무승부인 경우
+    if(user.name == computer.name) return "tie"
+    //삼항연산식
+    else if(user.name == "Rock") return computer.name == "Scissor" ? "Lose": "Win"
+    else if(user.name == "Scissor") return computer.name == "Paper" ? "Lose": "Win"
+    else if(user.name == "Paper") return computer.name == "Rock" ? "Lose": "Win"
+
+  }
+  */
 
   const play=(userChoice)=>{
     setUserSelect(choice[userChoice]) // 유저가 클릭한 버튼으로 state를 변경
 
     let computerChoice = randomChoice()
     setComputerSelect(computerChoice) // 컴퓨터의 state를 변경
+
+    //승패를 확인해주는 함수
+    setResult(judgement(choice[userChoice], computerChoice))
+
+    setComputerResult(reverse(choice[userChoice], computerChoice))
+  }
+
+
+  const judgement=(user, computer)=>{
+
+    //로직
+    //무승부인 경우
+    if(user.name == computer.name) return "tie"
+    //삼항연산식
+    else if(user.name == "Rock") return computer.name == "Scissor" ? "Win": "Lose"
+    else if(user.name == "Scissor") return computer.name == "Paper" ? "Win": "Lose"
+    else if(user.name == "Paper") return computer.name == "Rock" ? "Win": "Lose"
+    
   }
 
   // 컴퓨터 값을 랜덤으로 변경
   const randomChoice=()=>{
     let itemArray = Object.keys(choice) // 객체의 키값만 뽑아서 어레이로 만들어주는 함수
-    console.log("item array", itemArray)
+    // console.log("item array", itemArray)
 
     let randomItem = Math.floor(Math.random()*itemArray.length)
-    console.log("random value:", randomItem)
+    // console.log("random value:", randomItem)
     let final = itemArray[randomItem]
-    console.log("final", final)
+    // console.log("final", final)
     return choice[final]
   }
 
@@ -55,8 +95,8 @@ function App() {
     // 반드시 하나를 리턴해줘야한다.
     <div>
       <div className='main'>
-      <Box title = 'You' item={userSelect}/>
-      <Box title = 'Computer' item ={computerSelect}/>
+      <Box title = 'You' item={userSelect} result={result}/>
+      <Box title = 'Computer' item ={computerSelect} result = {result}/>
     </div>
     <div className='main'>
       {/* 콜백함수를 이용해야함, 안그러면 리액트가 play 함수를 실행시켜버림 */}
