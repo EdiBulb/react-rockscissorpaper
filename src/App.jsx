@@ -11,6 +11,12 @@ function App() {
   const [mode, setMode] = useState(null);
   const [multiGameInfo, setMultiGameInfo] = useState(null);
 
+  const resetGame = () => {
+  setMode(null);            // 시작 화면으로 돌아가기
+  setMultiGameInfo(null);   // 이전 정보 초기화
+};
+
+
   return (
     <div className="App">
       {mode === null && <StartScreen setMode={setMode} />}
@@ -20,7 +26,7 @@ function App() {
       )}
 
       {mode === "multi" && multiGameInfo && (
-        <h2>이제 여기서 게임 시작! (multiGameInfo: {JSON.stringify(multiGameInfo)})</h2>
+        <MultiGame gameInfo={multiGameInfo} onResetGame={resetGame} />
       )}
     </div>
   );

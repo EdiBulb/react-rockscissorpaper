@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const MultiGame = ({ gameInfo }) => {
+const MultiGame = ({ gameInfo, onResetGame }) => {
   const { player1, player2, rounds } = gameInfo;
 
   const [currentTurn, setCurrentTurn] = useState(1);
@@ -85,14 +85,20 @@ const MultiGame = ({ gameInfo }) => {
       )}
 
       {isGameOver && (
-        <div>
-          <h2>🏁 게임 종료!</h2>
-          <h3>
-            {p1Score > p2Score ? `${player1.name} 승리! 🎉` : 
-             p1Score < p2Score ? `${player2.name} 승리! 🎉` : "무승부입니다!"}
-          </h3>
-        </div>
-      )}
+  <div>
+    <h2>🏁 게임 종료!</h2>
+    <h3>
+      {p1Score > p2Score
+        ? `${player1.name} 승리! 🎉`
+        : p1Score < p2Score
+        ? `${player2.name} 승리! 🎉`
+        : "무승부입니다!"}
+    </h3>
+
+    <button onClick={onResetGame}>다시 시작하기</button>
+  </div>
+)}
+
     </div>
   );
 };
