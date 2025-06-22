@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import PlayerCard from "../components/PlayerCard";
+
 
 const MultiGame = ({ gameInfo, onResetGame }) => {
   const { player1, player2, rounds } = gameInfo;
@@ -63,7 +65,23 @@ const MultiGame = ({ gameInfo, onResetGame }) => {
     <div>
       <h2>🎮 {rounds}세판 가위바위보</h2>
       <p>라운드: {currentRound} / {rounds}</p>
-      <p>{player1.name} {player1.avatar} vs {player2.name} {player2.avatar}</p>
+      <div style={{ display: "flex", justifyContent: "center", gap: "20px", marginBottom: "20px" }}>
+  <PlayerCard
+    name={player1.name}
+    avatar={player1.avatar}
+    score={p1Score}
+    choice={p1Choice}
+    isTurn={currentTurn === 1}
+  />
+  <PlayerCard
+    name={player2.name}
+    avatar={player2.avatar}
+    score={p2Score}
+    choice={p2Choice}
+    isTurn={currentTurn === 2}
+  />
+</div>
+
       <p>점수: {p1Score} : {p2Score}</p>
 
       {!isGameOver && !isRoundDone && (
@@ -80,7 +98,23 @@ const MultiGame = ({ gameInfo, onResetGame }) => {
       {isRoundDone && (
         <div>
           <h3>이번 라운드 결과: {result === "win" ? `${player1.name} 승!` : result === "lose" ? `${player2.name} 승!` : "무승부!"}</h3>
-          <p>{player1.name}: {p1Choice} / {player2.name}: {p2Choice}</p>
+          <div style={{ display: "flex", justifyContent: "center", gap: "20px", marginBottom: "20px" }}>
+  <PlayerCard
+    name={player1.name}
+    avatar={player1.avatar}
+    score={p1Score}
+    choice={p1Choice}
+    isTurn={currentTurn === 1}
+  />
+  <PlayerCard
+    name={player2.name}
+    avatar={player2.avatar}
+    score={p2Score}
+    choice={p2Choice}
+    isTurn={currentTurn === 2}
+  />
+</div>
+
         </div>
       )}
 
