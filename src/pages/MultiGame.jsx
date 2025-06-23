@@ -20,12 +20,20 @@ const MultiGame = ({ gameInfo, onResetGame }) => {
   const handleChoice = (choice) => {
     if (isRoundDone || isGameOver) return;
 
+    // 🔥 흔들림 적용
+  setShakingButton(choice);
+  setTimeout(() => setShakingButton(null), 300); // 흔들림 해제
+
+
+
     if (currentTurn === 1) {
       setP1Choice(choice);
       setCurrentTurn(2);
     } else {
       setP2Choice(choice);
       const roundResult = judgement(p1Choice, choice);
+
+    
       setResult(roundResult);
       setIsRoundDone(true);
 
@@ -89,9 +97,18 @@ const MultiGame = ({ gameInfo, onResetGame }) => {
           <h3>
             {currentTurn === 1 ? `${player1.name} 차례!` : `${player2.name} 차례!`}
           </h3>
-          <button onClick={() => handleChoice("rock")}>✊ Rock</button>
-          <button onClick={() => handleChoice("paper")}>✋ Paper</button>
-          <button onClick={() => handleChoice("scissor")}>✌️ Scissor</button>
+          {["rock", "paper", "scissor"].map((item) => (
+  <button
+    key={item}
+    onClick={() => handleChoice(item)}
+    className={shakingButton === item ? "shake" : ""}
+  >
+    {item === "rock" && "✊ Rock"}
+    {item === "paper" && "✋ Paper"}
+    {item === "scissor" && "✌️ Scissor"}
+  </button>
+))}
+
         </div>
       )}
 
