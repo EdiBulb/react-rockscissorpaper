@@ -14,3 +14,15 @@
   background-color: #eef2ff;
   transform: scale(1.05);
 }
+
+
+@keyframes shine {
+  0% { box-shadow: 0 0 5px gold; }
+  50% { box-shadow: 0 0 20px gold; }
+  100% { box-shadow: 0 0 5px gold; }
+}
+
+.winner {
+  animation: shine 1s infinite;
+  border-color: gold;
+}
